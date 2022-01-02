@@ -1,27 +1,22 @@
-# This is a sample Python script.
 import requests
 import json
-import numpy as np
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+i =1
+
+while i <= 1000:
+    names = requests.get(f'https://pokeapi.co/api/v2/pokemon/{i}').json()
+    print(names['name'] +"    "+ names['types'][0]['type']['name'])
+    i+=1
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-response = requests.get('https://pokeapi.co/api/v2/pokemon/?limit=150').text
-list = json.loads(response)
-pokemons=[]
-for i in range(len(list['results'])):
-       pokemons.append(list['results'][i]['name'])
-arraya = np.array(pokemons)
-arraya= arraya.reshape(15,10)
-print(arraya)
+#
+# for i in range (len(names['results'])):
+#     print(names['results'][i]['name'])
+# for i in range(len(abilities['results'])):
+#     print(abilities['results'][i]['name'])
+
+# print (link['results'])
+# for i in range(len(link['results'])):
+#         print(link['results'][i]['name'])
